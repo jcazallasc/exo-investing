@@ -15,7 +15,7 @@ services:
    volumes:
      - ./app:/app
    command: >
-     sh -c "python manage.py load_providers && python manage.py load_currencies currencies.csv && python manage.py load_exchange_rates data.csv && python manage.py runserver 0.0.0.0:8000"
+     sh -c "python manage.py wait_for_db && python manage.py migrate && python manage.py load_providers && python manage.py load_currencies currencies.csv && python manage.py load_exchange_rates data.csv && python manage.py runserver 0.0.0.0:8000"
    environment:
      - DB_HOST=db
      - DB_NAME=app
