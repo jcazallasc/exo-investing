@@ -9,7 +9,7 @@
 ## Prerequisites
 - [Docker](https://docs.docker.com/docker-for-mac/install/) 
 
-## 1. How to run the app?
+## How to run the app?
 ```bash
 docker-compose up
 ```
@@ -17,27 +17,35 @@ This command will expose the app under `http://localhost:8000/`
 
 Also, the first time, `docker-compose` will run the migrations and run the commands to populate the database. 
 
-## 2. How to enter to the container?
+## How to enter to the container?
 After the previous step.
 
 ```bash
 docker-compose exec app sh
 ```
 
-## 3. How to run tests?
+## How to run tests?
 Once inside the container:
 ```bash
 python manage.py tests
 ```
 
-## 4. How to run flake8?
+## How to run flake8?
 Once inside the container:
 ```bash
 flake8
 ```
 
-## 5. How to run the django commands?
+## How to run the django commands?
 Once inside the container:
 ```bash
 python manage.py [command_name]
 ```
+
+## How to create a super user?
+Once inside the container:
+```bash
+python manage.py createsuperuser
+```
+
+Now you can access via `http://localhost:8000/admin/`
