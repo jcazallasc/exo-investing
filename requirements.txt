@@ -1,0 +1,9 @@
+Django>=2.2.13,<3
+djangorestframework
+psycopg2
+requests
+python-dotenv
+
+pytest
+flake8
+ipdb
