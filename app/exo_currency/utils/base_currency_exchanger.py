@@ -98,7 +98,8 @@ class BaseCurrencyExchanger:
         valuation_date: str,
     ) -> CurrencyExchangeRate:
         """
-        Check if the rate_value is already in our db for these parameters. In that case, returns the CurrencyExchangeRate
+        Check if the rate_value is already in our db for these parameters.
+        In that case, returns the CurrencyExchangeRate
         """
 
         source_currency, _created = Currency.objects.get_or_create(
