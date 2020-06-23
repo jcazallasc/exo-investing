@@ -6,14 +6,8 @@
 - [Backoffice doc](docs/backoffice.md) 
 - [Next steps](docs/next-steps.md) 
 
-## How to run using docker-compose
-
----
-
-### Prerequisites
+## Prerequisites
 - [Docker](https://docs.docker.com/docker-for-mac/install/) 
-
----
 
 ### How to run the app?
 ```bash
