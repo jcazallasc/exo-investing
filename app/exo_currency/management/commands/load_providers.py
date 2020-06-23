@@ -5,7 +5,7 @@ from exo_currency.utils import CURRENCY_EXCHANGER_PROVIDERS
 
 
 class Command(BaseCommand):
-    help = """Load providers."""
+    help = """Import providers in db"""
 
     def handle(self, *args, **options):
         order = 1

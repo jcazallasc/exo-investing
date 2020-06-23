@@ -17,6 +17,8 @@ class BaseCurrencyExchanger:
         exchanged_currency: str,
         valuation_date: str,
     ) -> float:
+        """Get the rate_value from origin_currency to target_currency in the valuation_date"""
+
         return self.provider().get_exchange_rate_data(
             source_currency,
             exchanged_currency,
@@ -29,6 +31,8 @@ class BaseCurrencyExchanger:
         target_currency: str,
         amount: str,
     ) -> float:
+        """Convert amount from origin_currency to target_currency"""
+
         rate = self.get_exchange_rate_data(
             origin_currency,
             target_currency,
@@ -44,6 +48,12 @@ class BaseCurrencyExchanger:
         target_currency: str,
         date_invested: str,
     ):
+        """
+        Responsible of calculate TWR (Time-Weighted Rate of Return)
+
+        Reference: https://www.investopedia.com/terms/t/time-weightedror.asp
+        """
+
         date_invested = datetime.strptime(date_invested, '%Y-%m-%d')
         today = datetime.now()
 
@@ -73,6 +83,10 @@ class BaseCurrencyExchanger:
         return reduce((lambda x, y: x * y), twr_values) - 1
 
     def _get_provider(self):
+        """
+        Get the provider with lowest order and import its class
+        """
+
         provider = Provider.objects.order_by('order').first()
         _class = dict(CURRENCY_EXCHANGER_PROVIDERS).get(provider.name)
         return load_class(_class)
@@ -83,6 +97,10 @@ class BaseCurrencyExchanger:
         exchanged_currency: str,
         valuation_date: str,
     ) -> CurrencyExchangeRate:
+        """
+        Check if the rate_value is already in our db for these parameters. In that case, returns the CurrencyExchangeRate
+        """
+
         source_currency, _created = Currency.objects.get_or_create(
             code=source_currency,
         )
@@ -104,6 +122,10 @@ class BaseCurrencyExchanger:
         valuation_date: str,
         rate_value: float,
     ) -> None:
+        """
+        Save the rate_value retrieved from the API in the db to avoid the API call next time
+        """
+
         source_currency, _created = Currency.objects.get_or_create(
             code=source_currency,
         )

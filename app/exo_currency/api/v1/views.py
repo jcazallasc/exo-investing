@@ -55,11 +55,12 @@ class CalculateTimeWeightedRateAPIView(APIView):
         target_currency,
         date_invested,
     ):
-        amount_calculated = BaseCurrencyExchanger()\
-            .calculate_time_weighted_rate(origin_currency,
-                                          amount,
-                                          target_currency,
-                                          date_invested)
+        amount_calculated = BaseCurrencyExchanger().calculate_time_weighted_rate(
+            origin_currency,
+            amount,
+            target_currency,
+            date_invested,
+        )
 
         serializer = CalculateTimeWeightedRateSerializer({
             'twr': amount_calculated,

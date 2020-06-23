@@ -18,6 +18,8 @@ class FixerCurrencyExchanger(BaseCurrencyExchanger):
         exchanged_currency: str,
         valuation_date: str,
     ) -> float:
+        """Get the rate_value from origin_currency to target_currency in the valuation_date"""
+
         _has_already_rate_value = self._has_already_rate_value(
             source_currency,
             exchanged_currency,

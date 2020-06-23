@@ -11,6 +11,8 @@ from exo_currency.utils.base_currency_exchanger import BaseCurrencyExchanger
 class ExchangeRateEvolutionView:
 
     def get(self, request):
+        """Return the exchange_rate_evolution view with the neccesary data"""
+
         seven_days_before = datetime.now() - timedelta(weeks=1)
 
         default_currencies = [currency.code for currency in Currency.objects.exclude(code='EUR')]
@@ -37,6 +39,12 @@ class ExchangeRateEvolutionView:
         _from: str,
         _to: str,
     ) -> List[List]:
+        """
+        Prepare data to be shown in the frontend
+
+        Return the evolution of rate_value from an origin currency to multiples currencies
+        """
+
         _from = datetime.strptime(_from, '%Y-%m-%d')
         _to = datetime.strptime(_to, '%Y-%m-%d')
 

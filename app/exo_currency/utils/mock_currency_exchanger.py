@@ -11,4 +11,6 @@ class MockCurrencyExchanger(BaseCurrencyExchanger):
         exchanged_currency: str,
         valuation_date: str,
     ) -> float:
+        """Get the rate_value from origin_currency to target_currency in the valuation_date"""
+
         return round(uniform(0, 2), 2)
