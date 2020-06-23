@@ -18,6 +18,6 @@ urlpatterns = [
     path(
         'calculate-time-weighted-rate/<str:origin_currency>/<str:amount>/<str:target_currency>/<str:date_invested>/',
         CalculateTimeWeightedRateAPIView.as_view(),
-        name='calculate-amount',
+        name='calculate-time-weighted-rate',
     ),
 ]

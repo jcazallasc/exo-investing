@@ -11,7 +11,7 @@ from exo_currency.utils.base_currency_exchanger import BaseCurrencyExchanger
 
 
 class CurrencyExchangeRateListAPIView(generics.ListAPIView):
-    queryset = CurrencyExchangeRate.objects.all()
+    queryset = CurrencyExchangeRate.objects.all().order_by('-id')
     serializer_class = CurrencyExchangeRateSerializer
     pagination_class = SmallSetPagination
 
