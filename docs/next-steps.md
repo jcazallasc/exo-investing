@@ -24,3 +24,7 @@ Instead of access to Django models, I could declare a contract (interface) of wh
 The simplest way I think to improve the performance of getting historical rate values is to schedule a cronjob that retrieves all rate values daily.
 
 Other way could be make calls in real time in parallel using things like asyncio to take advantage of waiting times between calls.
+
+## Separate Backoffice project
+
+The backoffice has been developed in the same app that the API V1. It has to be moved to any other place (like a different microservice)
