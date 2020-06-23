@@ -1,7 +1,4 @@
-import csv
-import os
-
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from exo_currency.models import Provider
 from exo_currency.utils import CURRENCY_EXCHANGER_PROVIDERS
