@@ -17,5 +17,3 @@ class Command(BaseCommand):
                 }
             )
             order += 1
-
-        print('Import providers done!')

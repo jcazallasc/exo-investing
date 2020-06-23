@@ -34,6 +34,5 @@ class Command(BaseCommand):
                             'symbol': row['symbol'],
                         },
                     )
-                print('Import currencies done!')
         except FileNotFoundError as error:
             raise CommandError(error)

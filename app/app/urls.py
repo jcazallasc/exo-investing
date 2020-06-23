@@ -19,4 +19,5 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('exo_currency.api.v1.urls')),
+    path('backoffice/', include('exo_currency.urls')),
 ]

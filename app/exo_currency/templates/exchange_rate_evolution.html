@@ -79,11 +79,14 @@
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-
-            var data = new google.visualization.DataTable();
-
             var chartColumns = JSON.parse('{{ chart_columns|safe }}')
             var chartData = JSON.parse('{{ chart_data|safe }}')
+
+            if (!chartColumns.length) {
+                return;
+            }
+
+            var data = new google.visualization.DataTable();
 
             data.addColumn('string', 'Day');
             for (i = 0; i < chartColumns.length; i++) {

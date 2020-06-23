@@ -43,6 +43,5 @@ class Command(BaseCommand):
                             'rate_value': row['rate_value'],
                         }
                     )
-                print('Import exchange rates done!')
         except FileNotFoundError as error:
             raise CommandError(error)

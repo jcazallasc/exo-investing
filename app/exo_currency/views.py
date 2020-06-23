@@ -13,10 +13,12 @@ class ExchangeRateEvolutionView:
     def get(self, request):
         seven_days_before = datetime.now() - timedelta(weeks=1)
 
+        default_currencies = [currency.code for currency in Currency.objects.exclude(code='EUR')]
+
         _from = request.GET.get('from', seven_days_before.strftime('%Y-%m-%d'))
         _to = request.GET.get('to', datetime.now().strftime('%Y-%m-%d'))
         _origin_currency = request.GET.get('origin_currency', 'EUR')
-        _target_currencies = request.GET.getlist('target_currencies', [])
+        _target_currencies = request.GET.getlist('target_currencies', default_currencies)
 
         return render(request, 'exchange_rate_evolution.html', {
             'currencies': Currency.objects.all(),
