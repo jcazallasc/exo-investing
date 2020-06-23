@@ -8,7 +8,7 @@ Supports:
 
 **Request**:
 
-`GET` `/api/v1/currency-exchange-rates/?from=:from&to=:to`
+`GET` `http://localhost:8000/api/v1/currency-exchange-rates/?from=:from&to=:to`
 
 Parameters:
 
@@ -57,7 +57,7 @@ Content-Type application/json
 
 **Request**:
 
-`GET` `/api/v1/calculate-amount/:origin_currency/:amount/:target_currency/`
+`GET` `http://localhost:8000/api/v1/calculate-amount/:origin_currency/:amount/:target_currency/`
 
 Parameters:
 
@@ -86,7 +86,7 @@ Content-Type application/json
 
 **Request**:
 
-`GET` `/api/v1/calculate-time-weighted-rate/:origin_currency/:amount/:target_currency/:date_invested/`
+`GET` `http://localhost:8000/api/v1/calculate-time-weighted-rate/:origin_currency/:amount/:target_currency/:date_invested/`
 
 Parameters:
 
