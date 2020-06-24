@@ -117,7 +117,7 @@ class ExoCurrencyV1ApiTests(TestCase):
                 'origin_currency': 'EUR',
                 'amount': '5',
                 'target_currency': 'USD',
-                'date_invested': date.today(),
+                'date_invested': '2020-06-20',
             },
         )
         res = self.client.get(url)
