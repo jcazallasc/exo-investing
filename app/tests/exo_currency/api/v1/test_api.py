@@ -1,4 +1,6 @@
+import json
 from datetime import date
+from unittest.mock import MagicMock, patch
 
 from django.contrib.auth import get_user_model
 from django.core.management import call_command
@@ -92,8 +94,23 @@ class ExoCurrencyV1ApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data['count'], currency_exchange_rates_count)
 
-    def test_calculate_amount(self):
+    @patch('requests.get')
+    def test_calculate_amount(self, mock_get):
         """Test creating user with valid payload is successful"""
+
+        mock_return_value = MagicMock()
+        mock_return_value.status_code = 200
+        mock_return_value.text = json.dumps({
+            'success': True,
+            'imestamp': 1363478399,
+            'historical': True,
+            'base': 'EUR',
+            'date': '2020-06-23',
+            'rates': {
+                    'USD': 1.307716,
+            }
+        })
+        mock_get.return_value = mock_return_value
 
         url = reverse(
             CALCULATE_AMOUNT_URL,
@@ -108,8 +125,23 @@ class ExoCurrencyV1ApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIsNotNone(res.data.get('amount'))
 
-    def test_calculate_time_weighted_rate(self):
+    @patch('requests.get')
+    def test_calculate_time_weighted_rate(self, mock_get):
         """Test creating user with valid payload is successful"""
+
+        mock_return_value = MagicMock()
+        mock_return_value.status_code = 200
+        mock_return_value.text = json.dumps({
+            'success': True,
+            'imestamp': 1363478399,
+            'historical': True,
+            'base': 'EUR',
+            'date': '2020-06-23',
+            'rates': {
+                    'USD': 1.307716,
+            }
+        })
+        mock_get.return_value = mock_return_value
 
         url = reverse(
             CALCULATE_TIME_WEIGHTED_RATE_URL,
@@ -117,7 +149,7 @@ class ExoCurrencyV1ApiTests(TestCase):
                 'origin_currency': 'EUR',
                 'amount': '5',
                 'target_currency': 'USD',
-                'date_invested': date.today(),
+                'date_invested': '2020-06-20',
             },
         )
         res = self.client.get(url)
