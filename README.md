@@ -2,6 +2,7 @@
 
 ## Index
 
+- [Challenge](docs/challenge.pdf) 
 - [API V1 doc](docs/api/v1/exo_currency.md) 
 - [Backoffice doc](docs/backoffice.md) 
 - [Next steps](docs/next-steps.md) 
